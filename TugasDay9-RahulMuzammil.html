@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Day 5</title>
+    <script>
+        function hitungGajiIfElse() {
+            let golongan = parseInt(document.getElementById("golongan").value);
+            let statusMenikah = document.getElementById("status").value;
+            let gaji, tunjangan = 0;
+
+            // Kondisi if else
+            if (golongan === 1) {
+                gaji = 10000000;
+            } else if (golongan === 2) {
+                gaji = 15000000;
+                if (statusMenikah === "ya") {
+                    tunjangan = 2000000;
+                }
+            } else if (golongan === 3) {
+                gaji = 20000000;
+            } else {
+                alert("Golongan tidak valid.");
+                return;
+            }
+
+            let gajiBersih = gaji + tunjangan;
+            document.getElementById("outputIfElse").innerText = `Gaji Bersih menggunakan (If Else): Rp ${gajiBersih.toLocaleString()}`;
+        }
+
+        function hitungGajiSwitchCase() {
+            let golongan = parseInt(document.getElementById("golongan").value);
+            let statusMenikah = document.getElementById("status").value;
+            let gaji, tunjangan = 0;
+
+            // Kondisi switch case
+            switch (golongan) {
+                case 1:
+                    gaji = 10000000;
+                    break;
+                case 2:
+                    gaji = 15000000;
+                    if (statusMenikah === "ya") {
+                        tunjangan = 2000000;
+                    }
+                    break;
+                case 3:
+                    gaji = 20000000;
+                    break;
+                default:
+                    alert("Golongan tidak valid.");
+                    return;
+            }
+
+            let gajiBersih = gaji + tunjangan;
+            document.getElementById("outputSwitchCase").innerText = `Gaji Bersih (Switch Case): Rp ${gajiBersih.toLocaleString()}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Tugas Day 9 Hitung Gaji Bersih Pegawai</h1>
+    <label for="golongan">Golongan (1, 2, atau 3):</label>
+    <br><br>
+    <input type="number" id="golongan" min="1" max="3" required><br><br>
+    
+    <label for="status">Status Menikah (ya/tidak):</label>
+    <br><br>
+    <input type="text" id="status" required><br><br>
+    
+    <button onclick="hitungGajiIfElse()">Hitung Gaji (If Else)</button>
+    <button onclick="hitungGajiSwitchCase()">Hitung Gaji (Switch Case)</button>
+    
+    <h2>Hasil:</h2>
+    <p id="outputIfElse"></p>
+    <p id="outputSwitchCase"></p>
+</body>
+</html>
